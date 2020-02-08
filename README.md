@@ -6,4 +6,4 @@ Welcome to Testproject!
 * `php artisan key:generate`
 * `php artisan serve` [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
-* Import SQL FIle **wilddog_dev.sql** on my project folder.
+* Import mySQL FIle **wilddog_dev.sql** on my project folder.
