@@ -18,6 +18,11 @@
                             {{ session()->get('success') }}
                         </div><br />
                         @endif
+                        @if(session()->get('unsuccess'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('unsuccess') }}
+                        </div><br />
+                        @endif
                           
                         <div class="x_panel">
                                 <div class="x_title">
@@ -39,7 +44,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label></label><br><br>
-                                                                <a type="button" href="add" class="btn btn-info btn-md">Add</a><br>
+                                                                <a type="button" href="adduser" class="btn btn-info btn-md">Add</a><br>
                                                             <label></label>
                                                         </div>
                                                     </div>

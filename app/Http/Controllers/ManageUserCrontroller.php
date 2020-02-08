@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-
 class ManageUserCrontroller extends Controller
 {
 
@@ -31,14 +30,28 @@ class ManageUserCrontroller extends Controller
             'password' => 'required',
         ]);
         $hashed = Hash::make($request->password);
-        $user = new User([
+        $data = User::Where('email','=',$request->get('email'))->get();
+        $count = $data->count();
+        if($count == 0){
+            $user = new User([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => $hashed,
-
         ]);
         $user->save();
-   
+
+        $active = Activity::create([
+            'log' => $request->get('email'),
+            'u_id' => Auth::User()->email,
+        ]);
+        $active->save();
+
+        }else{
+        return redirect()->route('user.index')
+                        ->with('unsuccess','duplicate email');  
+        }
+        
+
         return redirect()->route('user.index')
                         ->with('success','created successfully.');   
     }
@@ -65,9 +78,18 @@ class ManageUserCrontroller extends Controller
         return view('user.view_user', $data);
     }
 
-    public function update(Request $request, Customer $id)
+    public function update(Request $request)
     {
-       
+        $request->validate([
+            'new_password' => ['required'],
+            'new_confirm_password' => ['same:new_password'],
+        ]);
+        $id = $request->user_id;
+        User::Where('users.id', '=', $id)
+        ->update(['password'=> Hash::make($request->new_password)]);
+
+        return redirect()->route('user.index')
+        ->with('success', 'Password Change Successfully!!');    
     }
 
     public function delete($id)
@@ -135,7 +157,8 @@ class ManageUserCrontroller extends Controller
         return DataTables()->of($query)
             ->addColumn('buttondelete', function ($query) {
                 return 
-                '<a class="btn btn-danger fa fa-eraser" style="padding:6px 12px" id="btnDelete" onclick="btnDelete(' . $query->users_id . ')"></a>';
+                '<a class="btn btn-success fa fa-edit" style="padding:6px 12px" href="user/' . $query->users_id . '/edit"></a>
+                <a class="btn btn-danger fa fa-eraser" style="padding:6px 12px" id="btnDelete" onclick="btnDelete(' . $query->users_id . ')"></a>';
             })
             ->addColumn('status', function ($query) {
                 $buttons="";

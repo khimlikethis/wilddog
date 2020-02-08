@@ -39,7 +39,7 @@
                                     <input type="password" class="form-control"  id="confirmpassword" name="confirmpassword" value="" required="required">
                                 </div> -->
                                 <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback ">
-                                <button class="btn btn-success " type="submit" onClick="validatePassword(); >SAVE</button>
+                                <button class="btn btn-success " type="submit" onClick="validatePassword();" >SAVE</button>
                                 <a class="btn btn-danger" href="{{url('user')}}">EXIT</a>    
                                 </div> 
                                 </div>   

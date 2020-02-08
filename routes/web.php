@@ -39,7 +39,7 @@ Route::get('user/datatables', 'ManageUserCrontroller@getTable');
 Route::resource('user' , 'ManageUserCrontroller')->except(['destroy']);
 Route::get('user/activeadmin/{id}/{active}', 'ManageUserCrontroller@activeAdmin');
 Route::get('user/activestatus/{id}/{active}', 'ManageUserCrontroller@activeStatus');
-Route::get('add', 'ManageUserCrontroller@create');
+Route::get('adduser', 'ManageUserCrontroller@create');
 Route::delete('user/{id}', 'ManageUserCrontroller@delete');
 
 });
