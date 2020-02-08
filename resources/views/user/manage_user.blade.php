@@ -27,15 +27,7 @@
                                 <div class="panel-body">
                                         <form method="POST" id="search-form" class="form-inline" role="form">
                                                     <div class="container d-flex flex-row align-items-center">
-                                                        <div class="row">
-                                                        <div class="form-group">
-                                                            <label for="name">First Name</label><br>
-                                                            <input type="text" class="form-control" width="20" name="firstName" id="firstName" placeholder="Code">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="OFFICECODE">Last Name</label><br>
-                                                            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Search">
-                                                        </div>
+                                                        <div class="row">                                        
                                                         <div class="form-group">
                                                             <label for="OFFICECODE">Email</label><br>
                                                             <input type="text" class="form-control" name="Email" id="Email" placeholder="Search">
@@ -43,11 +35,6 @@
                                                         <div class="form-group">
                                                             <label></label><br><br>
                                                                 <button type="button" id="search-btn" class="btn btn-info btn-md">Search</button><br>
-                                                            <label></label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label></label><br><br>
-                                                                <a type="button" href="export" class="btn btn-info btn-md">Export</a><br>
                                                             <label></label>
                                                         </div>
                                                         <div class="form-group">
@@ -62,11 +49,9 @@
                                 <thead>
                                     <tr>
                                         <th style="width:3%" >ID</th>
-                                        <th style="width:5%">Name</th>
-                                        <th style="width:10%">Address</th>
-                                        <th style="width:5%">PhoneNumber</th>
-                                        <th style="width:6%">Salary</th>
                                         <th style="width:10%">Email</th>
+                                        <th style="width:5%">Active_Admin</th>
+                                        <th style="width:5%">Status_Active</th>
                                         <th style="width:3%">Action</th>
                                     </tr>
                                 </thead>
@@ -90,7 +75,7 @@ function btnDelete(id){
     confirm("คุณต้องการลบรายการนี้หรือไม่ ?", function () {
     $.ajax({
                type: 'DELETE',
-               url: "manage/"+id,
+               url: "user/"+id,
                data: {
                 "id":id,
                "_token": _token
@@ -130,28 +115,21 @@ function btnDelete(id){
         
         'columnDefs': [
                         {
-                            "className": "text-center", targets:[0,1,2,3,4,5,6]
+                            "className": "text-center", targets:[0,1,2,3,4]
                         }],
 
         ajax: {
-            url: '{{url('manage/datatables')}}',
+            url: '{{url('user/datatables')}}',
             data: function(data) {
-                data.firstName = $('input[name=firstName]').val();
-                data.lastName = $('input[name=lastName]').val();
                 data.Email = $('input[name=Email]').val();
-
             }
         },
         columns: [
-                    {data:'customer_id',name:'customer_id'},
-                    {data:'fullname',name: '',"render": function(data, type, full, meta) 
-                    {return full["first_name"] + " " + full["last_name"];}},
-                    {data:'address',name:'address'},
-                    {data:'phone_number',name:'phone_number'},
-                    {data:'salary',name:'salary',render: $.fn.dataTable.render.number( ',', '.', 2 )},
+                    {data:'users_id',name:'users_id'},
                     {data:'email',name:'email'},
-                    //{data:'status',name:'status'},
-                    {data:'buttonView',name:'buttonview'},
+                    {data:'type',name:'type'},
+                    {data:'status',name:'status'},
+                    {data:'buttondelete',name:'buttondelete'},
 
 
         ]

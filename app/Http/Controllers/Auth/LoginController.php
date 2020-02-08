@@ -26,18 +26,20 @@ class LoginController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-
         $adminLogin = array(
             'email' => $request->get("email"),
             'password' => $request->get("password"),
         );
-        if (Auth::attempt($adminLogin)) {
+
+        if (Auth::attempt(['email' => $request->get("email"), 'password' => $request->get("password"),'status' => 1])) {
             return redirect()->intended('/');
         }
-        //dd($adminLogin);
         $admin = User::where('email', $request->get("email"))
-        ->wherePassword(Hash::Make($request->get("password")))
+        //->wherePassword(Hash::Make($request->get("password")))
         ->first();
+        if (Hash::check($request->get("password"), $admin->password)) {
+            return redirect('auth/login')->with('msg', 'Your account is not active.');
+        }
         if (empty($admin)) {
             return redirect('auth/login')
                 ->withInmsg_errorput($request->only('email'))
@@ -45,24 +47,16 @@ class LoginController extends Controller
                 ->withErrors([
                     'email' => $this->getFailedLoginMessage(),
                 ]);
-        } else {
-            return redirect('auth/login')
-                ->withInmsg_errorput($request->only('email'))
-                ->with('msg', 'Your account is not active.')
-                ->withErrors([
-                    'email' => 'Your account is not active.',
-                ]);
-        }
+        } 
     }
-
     public function logout()
     {
         Session::flush();//Auth::logout();
         return redirect('auth/login');
     }
-
     private function getFailedLoginMessage()
     {
         return 'Email or Password incorrect';
     }
+    
 }

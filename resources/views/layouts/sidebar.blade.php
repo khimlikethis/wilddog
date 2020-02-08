@@ -26,7 +26,7 @@
                         </ul>
                         @if(Auth::User()->type == 1)
                         <ul class="nav side-menu">
-                            <li><a href="{{ url ('manage')}}"><i class="fa fa-edit"></i>Management Users</span></a>
+                            <li><a href="{{ url ('user')}}"><i class="fa fa-edit"></i>Management Users</span></a>
                             </li>
                         </ul>
                         @else

@@ -30,14 +30,17 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
 Route::get('manage/datatables', 'ManageCrontroller@getTable');
-Route::get('manage/active/{id}', 'ManageCrontroller@active');
 Route::get('add', 'ManageCrontroller@create');
 Route::delete('manage/{id}', 'ManageCrontroller@delete');
 Route::resource('manage' , 'ManageCrontroller')->except(['destroy']);
 Route::get('export','ManageCrontroller@export')->name('export');
 
-Route::resource('manage' , 'ManageCrontroller')->except(['destroy']);
-
+Route::get('user/datatables', 'ManageUserCrontroller@getTable');
+Route::resource('user' , 'ManageUserCrontroller')->except(['destroy']);
+Route::get('user/activeadmin/{id}/{active}', 'ManageUserCrontroller@activeAdmin');
+Route::get('user/activestatus/{id}/{active}', 'ManageUserCrontroller@activeStatus');
+Route::get('add', 'ManageUserCrontroller@create');
+Route::delete('user/{id}', 'ManageUserCrontroller@delete');
 
 });
 

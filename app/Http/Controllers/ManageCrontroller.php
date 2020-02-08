@@ -6,6 +6,7 @@ use App\Http\ServiceExport\CustomerExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\User;
 use App\Models\Activitylog;
 use Illuminate\Support\Facades\Redirect;
 
@@ -145,11 +146,6 @@ class ManageCrontroller extends Controller
         return Excel::download(new CustomerExport, 'Customer.xlsx');
     }
 
-    public function active($id)
-    {
-        
-    }
-
     public function getTable(Request $request)
     {
         $queryFirstname = $request->get('firstName');
@@ -179,17 +175,19 @@ class ManageCrontroller extends Controller
                 '<a class="btn btn-success fa fa-edit" style="padding:6px 12px" href="manage/' . $query->customer_id . '/edit"></a>
                 <a class="btn btn-danger fa fa-eraser" style="padding:6px 12px" id="btnDelete" onclick="btnDelete(' . $query->customer_id . ')"></a>';
             })
-            ->addColumn('status', function ($query) {
-                $buttons="";
-                if($query->active_status == 1){
-                 $buttons = '<a class="btn btn-success" type="button" style="padding:6px 12px" id="btnActive" href="manage/active/'.$query->customer_id.'">Active</a>';
+            // ->addColumn('status', function ($query) {
+            //     $buttons="";
+            //     if($query->active_status == 1){
+            //      $buttons = '<a class="btn btn-success" type="button" style="padding:6px 12px" id="btnActive" href="manage/active/'.$query->customer_id.'">Active</a>';
                 
-                }else{
-                 $buttons = '<a class="btn btn-danger" type="button" style="padding:6px 12px" id="btnActive" href="manage/active/'.$query->customer_id.'">In Active</a>';  
-                }
-                return $buttons;
-            })
-            ->rawColumns(['buttonView','status'])
+            //     }else{
+            //      $buttons = '<a class="btn btn-danger" type="button" style="padding:6px 12px" id="btnActive" href="manage/active/'.$query->customer_id.'">In Active</a>';  
+            //     }
+            //     return $buttons;
+            // })
+            ->rawColumns(['buttonView'
+            //,'status'
+            ])
             ->toJson();
     }
 }
