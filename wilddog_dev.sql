@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2020 at 10:27 AM
+-- Generation Time: Feb 09, 2020 at 06:28 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -62,8 +62,9 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`id`, `first_name`, `last_name`, `address`, `phone_number`, `salary`, `email`, `active_status`, `active_link`, `avatar_pic`, `created_at`, `updated_at`) VALUES
 (1, 'auekan', 'kanjankanti', 'Suthisan', 822222222, 20000, 'a@a', 0, NULL, NULL, NULL, '2020-02-07 07:30:34'),
-(2, 'q', 'q', '5462', 844444444, 20000, 'b@b', 0, NULL, NULL, '2020-02-07 10:09:12', '2020-02-07 10:11:24'),
-(4, 'kim', 'kim', '5688', 877777777, 20000, 'kim@kim', 0, NULL, NULL, '2020-02-07 10:15:52', '2020-02-07 10:15:52');
+(2, 'Dog', 'rocky', '5462', 844444444, 20000, 'b@b', 0, NULL, NULL, '2020-02-07 10:09:12', '2020-02-09 03:18:24'),
+(4, 'kimking', 'kim', '5688', 877777777, 20000, 'kim@kim', 0, NULL, NULL, '2020-02-07 10:15:52', '2020-02-09 03:07:50'),
+(5, 'Foxy', 'Blazing', '770,772 New resident', 846666666, 40000, 'F@B.com', 0, NULL, NULL, '2020-02-09 05:13:37', '2020-02-09 05:13:37');
 
 -- --------------------------------------------------------
 
@@ -158,11 +159,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `type`, `status`) VALUES
-(1, 'a', 'a@a', NULL, '$2y$10$5wHWi1GZv./c3ollKlqHuOFvmkA/dSkCYYi8E7Hdsh9FHgYKa72.O', 'v92U9znyupG4LPx1hhTBgBtdfyDYFIjvCL5B0rxPk6POuHylXWPqQG7IInfJ', '2020-02-05 18:50:19', '2020-02-05 18:50:19', 1, 1),
-(2, 'b', 'ad@ad', NULL, '$2y$10$3en23WcpA/fbI/h2TaaSpu.ASVO9VLOYEUnV6Nlbpe4rmI/sE1bDG', NULL, '2020-02-06 18:11:50', '2020-02-08 08:26:39', 1, 1),
-(4, 'user', 'u@er', NULL, '$2y$10$KZ5.WmM4ZCO7JFAjXhKOQudMGmdz3lPYD2ohSoWwKBByA9pHq5xN6', NULL, '2020-02-08 06:58:56', '2020-02-08 06:58:56', 2, 0),
-(5, 'oppppo', 'a@ass', NULL, '$2y$10$5wHWi1GZv./c3ollKlqHuOFvmkA/dSkCYYi8E7Hdsh9FHgYKa72.O', NULL, '2020-02-08 07:03:18', '2020-02-08 07:03:18', 2, 0),
-(6, 'kim', 'k@k', NULL, '$2y$10$a1WKrmlwOOK31c2VVElXR.1Om1Q7wmWHN3JQBsPML9DtY4FM8/1uK', NULL, '2020-02-08 08:45:22', '2020-02-08 08:51:05', 2, 1);
+(1, 'a', 'a@a.com', NULL, '$2y$10$9fB1F4I4Qhy.MagYSuh8FenZJt7RvzXNK5UyjFrUjeOaq3MQGfBT6', 'v92U9znyupG4LPx1hhTBgBtdfyDYFIjvCL5B0rxPk6POuHylXWPqQG7IInfJ', '2020-02-05 18:50:19', '2020-02-09 03:59:04', 1, 1),
+(2, 'b', 'ad@ad.com', NULL, '$2y$10$rrXbwosX3qUVWfQFcLi.guhexJzfWuMxZtl8XkvVlEHZnRKexfpAS', NULL, '2020-02-06 18:11:50', '2020-02-09 04:05:26', 2, 1),
+(4, 'user', 'u@er.com', NULL, '$2y$10$pKDM6m54kCxhJdmHd5HVeOyZ9Ad/hJ1lyvqt6gIjEQNswarCEJMyG', NULL, '2020-02-08 06:58:56', '2020-02-09 03:59:24', 2, 0),
+(13, 'Cat meow', 'Luc@Int.com', NULL, '$2y$10$wbqqkpsV5Y1AKyQ93n6j1uWARQ7uBpupOlpYWvikZEJttJo4YIUjy', NULL, '2020-02-09 04:08:55', '2020-02-09 04:08:55', 2, 0);
 
 --
 -- Indexes for dumped tables
@@ -225,7 +225,7 @@ ALTER TABLE `activity_log`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -249,7 +249,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
