@@ -37,8 +37,13 @@ class LoginController extends Controller
         $admin = User::where('email', $request->get("email"))
         //->wherePassword(Hash::Make($request->get("password")))
         ->first();
+
+       //dd(Hash::Make('12345678'));
+
         if (Hash::check($request->get("password"), $admin->password)) {
             return redirect('auth/login')->with('msg', 'Your account is not active.');
+        }else {
+            return redirect('auth/login')->with('msg', 'Email not found.');
         }
         if (empty($admin)) {
             return redirect('auth/login')

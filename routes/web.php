@@ -17,6 +17,7 @@ Route::get('auth/login', function () {
     return view('login.login');
 })->name('login');
 
+Route::resource('register' , 'RegisterCrontroller')->except(['destroy']);
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout');
 

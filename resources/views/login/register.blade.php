@@ -19,23 +19,29 @@
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
-            <form action="{{ url('login') }}" method="POST">
+            <form action="{{ url('register') }}" class="form-horizontal" method="POST" novalidate>
                     {!! csrf_field() !!}
-                    <h1>Login Form</h1>
+                    @method('POST')
+                    <h1>Register Form</h1>
                     @if (session('msg'))
                         <div class="alert alert-danger">
                             {{ session('msg') }}
                         </div>
                     @endif
                     <div class="item form-group">
+                        <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="2" data-validate-words="1" name="name" placeholder="Name" required="required" type="text">
+                    </div>
+                    <div class="item form-group">
                         <input type="email" id="email" name="email" required="required" value="" placeholder="Email" class="form-control col-md-7 col-xs-12">
                     </div>
                     <div class="item form-group">
                         <input id="password" type="password" name="password" placeholder="Password" data-validate-length="6,7" class="form-control col-md-7 col-xs-12" required="required">
                     </div>
-                    <div>
-                        <button type="submit" class="btn btn-default" style="width:100%;">Log In</button>
-                        <a class="btn btn-default" href="{{url('register')}}" style="width:100%;">Register</a>
+                    <div class="item form-group">
+                        <input id="password2" type="password" name="password2" placeholder="Re Password" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
+                    </div>
+                        <button type="submit" class="btn btn-default" style="width:100%;">Register</button>
+                        <a class="btn btn-default" href="{{url('auth/login')}}" style="width:100%;">Log In</a>
                     </div>
                     <div class="clearfix"></div>
                 </form>

@@ -529,7 +529,7 @@ class ComposerStaticInit9ddeafc2dcccc640e72f709bcb8a10a4
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ManageCrontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/ManageCrontroller.php',
-        'App\\Http\\Controllers\\UserCrontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/UserCrontroller.php',
+        'App\\Http\\Controllers\\ManageUserCrontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/ManageUserCrontroller.php',
         'App\\Http\\Controllers\\UsersExport' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersExport.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

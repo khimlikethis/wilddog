@@ -16,7 +16,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ManageCrontroller' => $baseDir . '/app/Http/Controllers/ManageCrontroller.php',
-    'App\\Http\\Controllers\\UserCrontroller' => $baseDir . '/app/Http/Controllers/UserCrontroller.php',
+    'App\\Http\\Controllers\\ManageUserCrontroller' => $baseDir . '/app/Http/Controllers/ManageUserCrontroller.php',
     'App\\Http\\Controllers\\UsersExport' => $baseDir . '/app/Http/Controllers/UsersExport.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
