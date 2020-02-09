@@ -7,3 +7,7 @@ Welcome to Testproject!
 * `php artisan serve` [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 * Import mySQL FIle **wilddog_dev.sql** on my project folder.
+
+* user&password 
+* a@a.com & 12345678 admin
+* ad@ad.com	& 12345678 user		
