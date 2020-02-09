@@ -18,53 +18,58 @@
                                <div class="clearfix"></div>
                             </div>
 
-                            <form class="form-horizontal form-label-left input_mask" data-parsley-validate action="{{route('manage.update', $customer->id) }}" method="POST">
+                            <form class="form-horizontal form-label-left input_mask" data-parsley-validate action="{{route('user.update', $customer->id) }}" method="POST">
                                @csrf
                                @method('PUT')
-                            <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
-                            <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="">Customer ID</label>
-                                    <input type="text" class="form-control"  id="inputSuccess5" name="id" value="{{$customer->id}}"  required="required" disabled>
+                               <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">First Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="name" class="form-control col-md-7 col-xs-12" value="{{$customer->first_name}}" data-validate-length-range="2" data-validate-words="1" name="first_name" required="required" type="text">
+                                    </div>
                                 </div>
-
-                                <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="">First Name</label>
-                                    <input type="text" class="form-control"  id="inputSuccess5" name="first_name" value="{{$customer->first_name}}"  required="required">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Last Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="name" class="form-control col-md-7 col-xs-12" value="{{$customer->last_name}}" data-validate-length-range="2" data-validate-words="1" name="last_name" required="required" type="text">
+                                    </div>
                                 </div>
-        
-                                <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="">Last Name</label>
-                                    <input type="text" class="form-control" id="inputSuccess5" name="last_name" value="{{$customer->last_name}}" required="required">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="email" id="email" name="email" required="required" value="{{$customer->email}}" class="form-control col-md-7 col-xs-12">
+                                    </div>
                                 </div>
-
-                                <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="">Email</label>
-                                    <input type="text" class="form-control" id="inputSuccess5" name="email" value="{{$customer->email}}" required="required" disabled>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Salary <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" id="number" name="salary" required="required" value="{{$customer->salary}}" data-validate-minmax="1000,10000000" class="form-control col-md-7 col-xs-12">
+                                    </div>
                                 </div>
-            
-                                <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="">Phone Number</label>
-                                <input type="text" class="form-control" name="phone_number" value="{{$customer->phone_number}}" id="inputSuccess5" required="required">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Phone Number <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="tel" id="telephone" name="phone_number" required="required" value="{{$customer->phone_number}}" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                                    </div>
                                 </div>
-            
-                                <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="">Salary</label>
-                                    <input type="text" class="form-control"  id="inputSuccess5" name="salary" value="{{$customer->salary}}" required="required">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Address <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea id="textarea" required="required" name="address" class="form-control col-md-7 col-xs-12">{{$customer->address}}</textarea>
+                                    </div>
                                 </div>
-                                <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="">Active Status</label>
-                                    <input type="text" class="form-control"  id="inputSuccess5" value="{{$customer->active_status}}" required="required" disabled>
-                                </div>
-                                <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="">Address</label>
-                                <textarea class="form-control" d="inputSuccess5" rows="3" name="address" placeholder="Address">{{$customer->address}}</textarea>
-                                </div>
-
-                                <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback ">
-                                <button class="btn btn-success " type="submit" >SAVE</button>
-                                <a class="btn btn-danger" href="{{url('manage')}}">EXIT</a>    
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-3">
+                                    <a class="btn btn-danger" href="{{url('manage')}}">EXIT</a>    
+                                    <button id="send" type="submit" class="btn btn-success">Submit</button>
+                                    </div>
                                 </div> 
-                                        </div>   
                                         <input type="hidden" name="customer_id" value="{{$customer->id}}" > 
                                     </form>   
                                 </div>

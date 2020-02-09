@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Role;
-use App\Models\Activitylog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -40,12 +39,6 @@ class ManageUserCrontroller extends Controller
         ]);
         $user->save();
 
-        $active = Activity::create([
-            'log' => $request->get('email'),
-            'u_id' => Auth::User()->email,
-        ]);
-        $active->save();
-
         }else{
         return redirect()->route('user.index')
                         ->with('unsuccess','duplicate email');  
@@ -74,19 +67,21 @@ class ManageUserCrontroller extends Controller
         $data = array(
             'user' => $user,
         );
-        //dd($data);
         return view('user.view_user', $data);
     }
 
     public function update(Request $request)
     {
+        //dd($request);
         $request->validate([
-            'new_password' => ['required'],
-            'new_confirm_password' => ['same:new_password'],
+            'password' => ['required'],
+            'password2' => ['same:password'],
         ]);
         $id = $request->user_id;
         User::Where('users.id', '=', $id)
-        ->update(['password'=> Hash::make($request->new_password)]);
+        ->update([
+            'password'=> Hash::make($request->new_password)
+        ]);
 
         return redirect()->route('user.index')
         ->with('success', 'Password Change Successfully!!');    

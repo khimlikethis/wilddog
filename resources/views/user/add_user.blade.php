@@ -20,29 +20,39 @@
                             <form class="form-horizontal form-label-left input_mask" data-parsley-validate id="loginForm" action="{{route('user.store') }}" method="POST">
                                @csrf
                                @method('POST')
-                            <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
-                                <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
-                                    <label for="">name</label>
-                                    <input type="text" class="form-control"  id="inputSuccess5" name="name" value=""  required="required" >
+                               <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="both name(s) e.g Jon Doe" required="required" type="text">
+                                    </div>
+                               </div>
+                               <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input type="email" id="email" name="email" required="required" value="" class="form-control col-md-7 col-xs-12">
+                                    </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
-                                    <label for="">Email</label>
-                                    <input type="text" class="form-control" id="inputSuccess5" name="email" value="" required="required" >
+                                <div class="item form-group">
+                                    <label for="password" class="control-label col-md-3">Password</label>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input id="password" type="password" name="password" data-validate-length="6,7" class="form-control col-md-7 col-xs-12" required="required">
+                                    </div>
                                 </div>
-                                <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
-                                    <label for="">password</label>
-                                <input type="password" class="form-control" name="password" value="" id="password" required="required">
-                                <input type="checkbox" onclick="showpass()">Show Password
+                                <div class="item form-group">
+                                    <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">Repeat Password</label>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input id="password2" type="password" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
+                                    </div>
                                 </div>
-                                <!-- <div class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
-                                    <label for="">Confirm password</label>
-                                    <input type="password" class="form-control"  id="confirmpassword" name="confirmpassword" value="" required="required">
-                                </div> -->
-                                <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback ">
-                                <button class="btn btn-success " type="submit" onClick="validatePassword();" >SAVE</button>
-                                <a class="btn btn-danger" href="{{url('user')}}">EXIT</a>    
-                                </div> 
-                                </div>   
+                                <div class="ln_solid"></div>
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-3">
+                                        <a type="submit" href="{{url('user')}}" class="btn btn-danger">Exit</a>
+                                        <button id="send" type="submit" class="btn btn-success">Update Password</button>
+                                        </div>
+                                    </div>
                                     </form>   
                                 </div>
                             </div>

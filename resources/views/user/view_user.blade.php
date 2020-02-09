@@ -18,37 +18,35 @@
                                <div class="clearfix"></div>
                             </div>
 
-                            <form class="form-horizontal form-label-left input_mask" data-parsley-validate action="{{route('user.update', $user->id) }}" method="PUT">
+                            <form class="form-horizontal form-label-left input_mask" data-parsley-validate action="{{route('user.update', $user->id) }}" method="POST" >
                                @csrf
                                @method('PUT')
-                             <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
-                                <div class="col-md-12 col-sm-6 col-xs-12">
-                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
-                                        <label for="">user ID</label>
-                                        <input type="text" class="form-control"  id="inputSuccess5" name="id" value="{{$user->id}}"  required="required" disabled>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
-                                      <label for="">Email</label>
-                                      <input type="text" class="form-control" id="inputSuccess5" name="email" value="{{$user->email}}" required="required" disabled>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input type="email" id="email" name="email" required="required" value="{{$user->email}}" class="form-control col-md-7 col-xs-12" disabled>
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-sm-6 col-xs-12">
-                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
-                                        <label for="">Password</label>
-                                        <input type="password" class="form-control"  id="new_password" name="new_password"  required="required" autocomplete="current-password">
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
-                                        <label for="">Confirm Password</label>
-                                        <input type="password" class="form-control"  id="new_confirm_password" name="new_confirm_password" required="required" autocomplete="current-password">
+                                <div class="item form-group">
+                                    <label for="password" class="control-label col-md-3">Password</label>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input id="password" type="password" name="password" data-validate-length="6,7" class="form-control col-md-7 col-xs-12" required="required">
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-sm-6 col-xs-12">
-                                <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback ">
-                                <button class="btn btn-success " type="submit" >Update Password</button>
-                                <a class="btn btn-danger" href="{{url('user')}}">EXIT</a>    
+                                <div class="item form-group">
+                                    <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">Repeat Password</label>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <input id="password2" type="password" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
+                                    </div>
                                 </div>
-                            </div>
-                        </div>  
+                                <div class="ln_solid"></div>
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-3">
+                                        <a type="submit" href="{{url('user')}}" class="btn btn-danger">Exit</a>
+                                        <button id="send" type="submit" class="btn btn-success">Update Password</button>
+                                        </div>
+                                    </div>
                                         <input type="hidden" name="user_id" value="{{$user->id}}" > 
                                     </form>   
                                 </div>
